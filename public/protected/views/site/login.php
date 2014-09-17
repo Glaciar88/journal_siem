@@ -35,8 +35,8 @@ $this->breadcrumbs=array(
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
 		<p class="hint">
-			<?php echo $user, $password; ?>
-			
+			<?php //echo $user, $password; ?>
+
 		</p>
 	</div>
 
