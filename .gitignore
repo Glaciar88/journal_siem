@@ -39,4 +39,4 @@ Icon
 # Наши изменения
 access.log
 error.log
-
+public/protected/config/local.php
