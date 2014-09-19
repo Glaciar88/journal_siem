@@ -20,7 +20,7 @@ class User extends CActiveRecord
 	public $password_old;
 	public $password_new;
 	public $password_rep; 
-	public $password_com = 0;
+	public $password_com;
 	 
 	public function tableName()
 	{
@@ -36,17 +36,18 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, name, password', 'required'),
+			array('username, name, password', 'required', 'on'=>'insert'),
 			array('password_old, password_new, password_rep', 'required', 'on'=>'update'),
+			array('password_old', 'PasswordValid'),
+			array('password', 'unsafe', 'on'=>'update'),
 			array('username', 'length', 'max'=>50),
-			array('surname, name', 'length', 'max'=>30),
-			array('password, password_old, password_new, password_rep', 'filter', 'filter'=>'hashPassword'), 
-			array('password_new', 'compare', 'compareAttribute'=>'password_rep', 'on'=>'update'),
+			array('salt, name', 'length', 'max'=>60),
+			array('password_new', 'compare', 'compareAttribute'=>'password_rep', 'message'=>'Пароли не совпадают', 'on'=>'update'),
 			array('password, password_old, password_new, password_rep', 'length', 'max'=>100),
-			array('surname', 'safe', 'on'=>'create'),
+			array('salt', 'safe', 'on'=>'create'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, surname, name', 'safe', 'on'=>'search'),
+			array('id, username, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -123,17 +124,19 @@ class User extends CActiveRecord
         return CPasswordHelper::verifyPassword($password,$this->password);
     }
  
-    public function hashPassword($password)
+	public function hashPassword($password)
     {
-        return CPasswordHelper::hashPassword($password);
+		return CPasswordHelper::hashPassword($password);
+
     }
 	
+		
 	/**
 	* Метод, вызываемый перед сохранением данных модели
 	* @return boolean признак прохождения проверки
 	*/
 	protected function beforeSave()
-	{
+	{	
 		// Кодировать пароль при создании пользователя
 		if ($this->scenario === 'insert') {
 			$this->password = $this->hashPassword($this->password);
@@ -144,15 +147,14 @@ class User extends CActiveRecord
 			
 		return true;
 	}
-	public function beforeValidate()
+	public function PasswordValid()
 	{
 		if ($this->scenario === 'update') {
-			$this->password_old = $this->hashPassword($this->password_old);
-			if ($this->password_old == $this->password) {
+			$password = $this->password_old;
+			if (CPasswordHelper::verifyPassword($password,$this->password)) {
 				return true;
 			}else {
 			$this->addError($attribute, Yii::t('password_old', 'Неверный пароль'));
-			var_dump($this->password, $this->password_old);
 			return false;}
 		}
 		return true;

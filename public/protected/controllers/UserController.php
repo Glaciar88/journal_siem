@@ -64,6 +64,9 @@ class UserController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
+		$salt = $model->generateSalt();
+		$saltMd = md5($salt);
+		$pass = $model->hashPassword('admin',$saltMd);
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];

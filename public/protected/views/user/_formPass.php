@@ -34,7 +34,7 @@
 		</div>
 		<div class="user_form_right">
 			<?php echo $form->textField($model,'password_new'); ?>
-			<?php echo $form->error($model,'password_new'); ?>
+			
 		</div>
 	</div>
 	<div class="row _fclear">
