@@ -40,5 +40,5 @@ Icon
 access.log
 error.log
 public/protected/config/local.php
-public/assets/
-public/protected/runtime/
+# public/assets/
+# public/protected/runtime/
