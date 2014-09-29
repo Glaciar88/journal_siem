@@ -178,9 +178,17 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 		.mash_item .col {float: left; padding-right: 25px}
 		.mash_item label {padding-right: 7px; font-size: 14px}
 		.mash_item input {padding: 5px 7px}
-	
+
 	.buttons {padding-top: 20px}
 	
-	#User_password_old, #User_password_new, #User_password_rep {padding: 5px 7px; font-size: 14px; width: 250px}
+	#User_username, #User_name, #User_password, #User_password_old, #User_password_new, #User_password_rep {padding: 5px 7px; font-size: 14px; width: 250px; margin-top: 3px}
+	#User_role {padding: 5px 5px; font-size: 14px; width: 268px; margin-top: 3px}
 	.user_form_left {float: left; width: 120px; line-height: 36px}
-	.user_form_right {float: left; width: 260px; line-height: 36px}
+	.user_form_right {float: left; width: 270px; line-height: 36px}
+	.view > ._fclear > .title > a {font-size: 18px; text-decoration: none; color: #7FA4B8;}
+		.view > ._fclear > .title > a:hover {color: #48A3D5;}
+	.view > ._fclear > .fright {color: #B05627;}
+	.view > ._fclear > .mtitle {margin: 10px 0 20px 0; padding: 10px 5px; font-size: 16px; border: none; background-color: #B3DDEA;}
+	.view > ._fclear > .fleft span {margin: 0 75px;}
+	
+	

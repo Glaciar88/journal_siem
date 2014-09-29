@@ -39,8 +39,9 @@ date_default_timezone_set("Europe/Moscow");?>
 			<div class="profile">
 				<ul id="prof_menu">
 					<?php if (Yii::app()->user->id) {
-						echo "<li>Вы вошли как "; echo Yii::app()->user->name.''; echo "<ul><li>"; echo CHtml::link('Сменить пароль', array('user/update', 'id'=>Yii::app()->user->id));  echo "</li>
-						<li>";  echo CHtml::link('Выйти', array('/site/logout'));  echo "</li></ul>"; 
+						echo "<li>Вы вошли как "; echo Yii::app()->user->name.''; echo "<ul><li>"; echo CHtml::link('Сменить пароль', array('user/update', 'id'=>Yii::app()->user->id)); echo "</li>"; ?>
+						<?php if (Yii::app()->user->role == 'administrator') {echo "<li>"; echo CHtml::link('Пользователи', array('user/index')); echo "</li>";} ?>  
+						<?php echo "<li>"; echo CHtml::link('Выйти', array('/site/logout'));  echo "</li></ul>"; 
 						}
 						else {
 							echo "<li>";  echo CHtml::link('Войти', array('/site/login')); echo "</li>"; 

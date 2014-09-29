@@ -38,6 +38,17 @@
 			<?php echo $form->error($model,'name'); ?>
 		</div>
 	</div>
+	
+	<div class="row _fclear">
+		<div class="user_form_left">
+			<?php echo $form->labelEx($model,'role'); ?>
+		</div>
+		<div class="user_form_right">
+			<?php echo $form->dropDownList($model, 'role', array('empty' => '(Выберите из списка)', 'administrator'=>'Администратор', 'operator'=>'Оператор', 'viewer'=>'Пользователь')); ?>
+			
+			<?php echo $form->error($model,'role'); ?>
+		</div>
+	</div>
 
 	<div class="row _fclear">
 		<div class="user_form_left">

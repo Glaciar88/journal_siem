@@ -21,6 +21,11 @@ class User extends CActiveRecord
 	public $password_new;
 	public $password_rep; 
 	public $password_com;
+	
+	const ROLE_ADMIN = 'administrator';
+    const ROLE_MODER = 'opeartor';
+    const ROLE_USER = 'viewer';
+    const ROLE_BANNED = 'banned';
 	 
 	public function tableName()
 	{
@@ -36,18 +41,18 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, name, password', 'required', 'on'=>'insert'),
+			array('username, name, role, password', 'required', 'on'=>'insert'),
 			array('password_old, password_new, password_rep', 'required', 'on'=>'update'),
 			array('password_old', 'PasswordValid'),
 			array('password', 'unsafe', 'on'=>'update'),
 			array('username', 'length', 'max'=>50),
-			array('salt, name', 'length', 'max'=>60),
+			array('name', 'length', 'max'=>60),
 			array('password_new', 'compare', 'compareAttribute'=>'password_rep', 'message'=>'Пароли не совпадают', 'on'=>'update'),
 			array('password, password_old, password_new, password_rep', 'length', 'max'=>100),
-			array('salt', 'safe', 'on'=>'create'),
+			array('role', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, name', 'safe', 'on'=>'search'),
+			array('id, username, role, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,7 +75,7 @@ class User extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'username' => 'Логин',
-			'surname' => 'Surname',
+			'role' => 'Права',
 			'name' => 'Имя',
 			'password' => 'Пароль',
 			'password_old' => 'Старый пароль',
@@ -99,7 +104,7 @@ class User extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('username',$this->username,true);
-		$criteria->compare('surname',$this->surname,true);
+		$criteria->compare('role',$this->role,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('password',$this->password,true);
 
@@ -159,5 +164,6 @@ class User extends CActiveRecord
 		}
 		return true;
 	}
+	
 
 }

@@ -22,8 +22,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'surname'); ?>
-		<?php echo $form->textField($model,'surname',array('size'=>30,'maxlength'=>30)); ?>
+		<?php echo $form->label($model,'role'); ?>
+		<?php echo $form->textField($model,'role',array('size'=>30,'maxlength'=>30)); ?>
 	</div>
 
 	<div class="row">
@@ -32,7 +32,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
+		<?php echo CHtml::submitButton('Поиск'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

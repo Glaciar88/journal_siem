@@ -29,7 +29,7 @@
 					case 2: 
 						echo '<div>Cтатус: <span class="true">Сделано</span></div>
 						<div>Выпонил: '; ?>
-						<?php echo CHtml::link(CHtml::encode($data->user_print->name), array('user/view', 'id'=>$data->user->id)); ?>
+						<?php echo CHtml::link(CHtml::encode($data->user_print->name), array('user/view', 'id'=>$data->user_print->id)); ?>
 						<?php echo '</div>
 						<div class="date_job">Дата: ';?>
 						<?php echo Yii::app()->dateFormatter->format("d.MM.yyyy", $data->date_print);?>
@@ -52,7 +52,7 @@
 					case 2: 
 						echo '<div>Cтатус: <span class="true">Сделано</span></div>
 						<div>Выпонил: '; ?>
-						<?php echo CHtml::link(CHtml::encode($data->user_instal->name), array('user/view', 'id'=>$data->user->id)); ?>
+						<?php echo CHtml::link(CHtml::encode($data->user_instal->name), array('user/view', 'id'=>$data->user_instal->id)); ?>
 						<?php echo '</div>
 						<div class="date_job">Дата: ';?>
 						<?php echo Yii::app()->dateFormatter->format("d.MM.yyyy", $data->date_instal);?>
@@ -74,7 +74,7 @@
 					case 2: 
 						echo '<div>Cтатус: <span class="true">Сделано</span></div>
 						<div>Выпонил: '; ?>
-						<?php echo CHtml::link(CHtml::encode($data->user_aoi->name), array('user/view', 'id'=>$data->user->id)); ?>
+						<?php echo CHtml::link(CHtml::encode($data->user_aoi->name), array('user/view', 'id'=>$data->user_aoi->id)); ?>
 						<?php echo '</div>
 						<div class="date_job">Дата: ';?>
 						<?php echo Yii::app()->dateFormatter->format("d.MM.yyyy", $data->date_aoi);?>

@@ -6,9 +6,19 @@ $this->breadcrumbs=array(
 	'Записи',
 );
 
-$this->menu=array(
-	array('label'=>'Добавить запись', 'url'=>array('create')),
-);
+if(Yii::app()->user->role == 'administrator'){
+	$this->menu=array(
+		array('label'=>'Добавить запись', 'url'=>array('create')),
+		array('label'=>'Управление записями', 'url'=>array('admin')),
+	);
+}
+
+if(Yii::app()->user->role == 'operator'){
+	$this->menu=array(
+		array('label'=>'Добавить запись', 'url'=>array('create')),
+	);
+}
+
 ?>
 
 <?php $this->widget('zii.widgets.CListView', array(

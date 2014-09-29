@@ -177,4 +177,39 @@ class Added extends CActiveRecord
 			return false; // Если следует прекритить вставку записи
 		}
 	}
+	
+	public static function countJob($id_user, $job_mashine){
+		
+		//$results =Added::model()->findAll(array('condition' => '`user_id_print` in ($id_user)'));
+		//$count = count ($results);
+		//$n=Post::model()->count($condition,$params);
+		switch ($job_mashine){
+			case 1:
+				echo Added::model()->count('`user_id_print`='.$id_user);
+				break;
+			case 2:
+				echo Added::model()->count('`user_id_instal`='.$id_user);
+				break;
+			case 3:
+				echo Added::model()->count('`user_id_aoi`='.$id_user);
+				break;
+			return false;
+		}
+		
+	}
+	
+	public static function listJob ($id_user, $job_mashine){
+		$results =Added::model()->findByAttributes(array('user_id_print'=>$id_user), array('order' => 'date_add desc', 'limit' => 10));
+		if($results){
+			//var_dump ($results);
+			foreach ($results as $model) {
+				echo CHtml::encode($model->number_memo);
+				var_dump ($model->number_memo);
+			}
+		} else {
+			echo "Пользователь не выпонил ни одной работы.";
+		}
+		
+	}
+	
 }

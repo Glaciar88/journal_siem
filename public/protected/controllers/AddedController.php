@@ -33,11 +33,15 @@ class AddedController extends Controller
 		//	),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update','index','view'),
-				'users'=>array('@'),
+				'roles'=>array('operator'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('index','view'),
+				'roles'=>array('viewer'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'actions'=>array('admin','delete','create','update','index','view'),
+				'roles'=>array('administrator'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),

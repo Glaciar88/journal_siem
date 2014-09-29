@@ -30,11 +30,15 @@ class UserController extends Controller
 			
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('update'),
-				'users'=>array('@'),
+				'roles'=>array('opeartor'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('update'),
+				'roles'=>array('viewer'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','view','create','index'),
-				'users'=>array('admin'),
+				'actions'=>array('admin','delete','view','create','index','update'),
+				'roles'=>array('administrator'),
 			),
 			array('deny',
                 'users'=>array('*'),
@@ -63,10 +67,6 @@ class UserController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
-		$salt = $model->generateSalt();
-		$saltMd = md5($salt);
-		$pass = $model->hashPassword('admin',$saltMd);
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];

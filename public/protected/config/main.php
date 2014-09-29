@@ -36,6 +36,7 @@ return array(
 	// application components
 	'components'=>array(
 		'user'=>array(
+			'class' => 'WebUser',
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
@@ -63,6 +64,13 @@ return array(
 			'charset' => 'utf8',
 		),
 		
+		'authManager' => array(
+			// Будем использовать свой менеджер авторизации
+			'class' => 'PhpAuthManager',
+			// Роль по умолчанию. Все, кто не админы, модераторы и юзеры — гости.
+			'defaultRoles' => array('guest'),
+		),
+		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
@@ -88,6 +96,7 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'a.yandukin@gmail.com',
+		'adminEmail'=>'iandukin@gmail.com',
 	),
+	
 );

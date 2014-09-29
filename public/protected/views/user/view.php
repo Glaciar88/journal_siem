@@ -9,7 +9,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Список пользователей', 'url'=>array('index')),
-	array('label'=>'Обновить информацию', 'url'=>array('update', 'id'=>$model->id)),
 	
 );
 ?>
@@ -30,3 +29,11 @@ $this->menu=array(
 <?php echo CHtml::encode($model->getAttributeLabel('username')); ?>: <?php echo CHtml::encode($model->username); ?><br />
 <?php echo CHtml::encode($model->getAttributeLabel('name')); ?>: <?php echo CHtml::encode($model->name); ?>
 	<br />
+<h2>Последние выполненые работы</h2>
+<div class="title">Принтер</div>
+<?php Added::listJob($model->id, 1) ?>
+
+<div class="title">Установщик</div>
+
+<div class="title">АОИ</div>
+ 

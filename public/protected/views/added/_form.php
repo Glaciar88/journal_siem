@@ -56,7 +56,8 @@
 
 		<div class="row col">
 			<?php echo $form->labelEx($model,'user_id_print',array('label'=>'Выполнил')); ?>
-			<?php echo $form->dropDownList($model, 'user_id_print', CHtml::listData(User::model()->findAll(), 'id', 'name'), array('empty' => '(Выберите из списка)')); ?>
+			
+			<?php echo $form->dropDownList($model, 'user_id_print', CHtml::listData(User::model()->findAll(array('condition' => '`role` in ("administrator", "operator")')), 'id', 'name'), array('empty' => '(Выберите из списка)')); ?>
 			<?php echo $form->error($model,'user_id_print'); ?>
 		</div>
 	</div>
@@ -75,7 +76,7 @@
 		</div>
 		<div class="row col">
 			<?php echo $form->labelEx($model,'user_id_instal',array('label'=>'Выполнил')); ?>
-			<?php echo $form->dropDownList($model, 'user_id_instal', CHtml::listData(User::model()->findAll(), 'id', 'name'), array('empty' => '(Выберите из списка)')); ?>
+			<?php echo $form->dropDownList($model, 'user_id_instal', CHtml::listData(User::model()->findAll(array('condition' => '`role` in ("administrator", "operator")')), 'id', 'name'), array('empty' => '(Выберите из списка)')); ?>
 			<?php echo $form->error($model,'user_id_instal'); ?>
 		</div>
 	</div>	
@@ -95,7 +96,7 @@
 
 		<div class="row col">
 			<?php echo $form->labelEx($model,'user_id_aoi',array('label'=>'Выполнил')); ?>
-			<?php echo $form->dropDownList($model, 'user_id_aoi', CHtml::listData(User::model()->findAll(), 'id', 'name'), array('empty' => '(Выберите из списка)')); ?>
+			<?php echo $form->dropDownList($model, 'user_id_aoi', CHtml::listData(User::model()->findAll(array('condition' => '`role` in ("administrator", "operator")')), 'id', 'name'), array('empty' => '(Выберите из списка)')); ?>
 			<?php echo $form->error($model,'user_id_aoi'); ?>
 		</div>
 	</div>
