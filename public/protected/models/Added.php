@@ -199,17 +199,52 @@ class Added extends CActiveRecord
 	}
 	
 	public static function listJob ($id_user, $job_mashine){
-		$results =Added::model()->findByAttributes(array('user_id_print'=>$id_user), array('order' => 'date_add desc', 'limit' => 10));
-		if($results){
-			//var_dump ($results);
-			foreach ($results as $model) {
-				echo CHtml::encode($model->number_memo);
-				var_dump ($model->number_memo);
+		if ($job_mashine == 1){
+			$results =Added::model()->findallByAttributes(array('user_id_print'=>$id_user), array('order' => 'date_print desc', 'limit' => 10));
+			if($results){	
+				foreach ($results as $model) {
+					echo "<div class='_fclear'><div class='fleft number_memo'><a href='/index.php?r=added/view&id=$model->id'>Служебная записка № ";
+					echo CHtml::encode($model->number_memo);
+					echo "</a></div><div class='fleft'><b>Выполнил: </b>";
+					echo Yii::app()->dateFormatter->format("dd MMMM yyyy", $model->date_print);
+					echo "</div></div>";
+				}
 			}
-		} else {
-			echo "Пользователь не выпонил ни одной работы.";
+			else {
+				echo "Пользователь не выполнил ни одной работы.";
+			}
 		}
-		
-	}
+		if ($job_mashine == 2){
+			$results =Added::model()->findallByAttributes(array('user_id_instal'=>$id_user), array('order' => 'date_instal desc', 'limit' => 10));
+			if($results){
+				foreach ($results as $model) {
+					echo "<div class='_fclear'><div class='fleft number_memo'><a href='/index.php?r=added/view&id=$model->id'>Служебная записка № ";
+					echo CHtml::encode($model->number_memo);
+					echo "</a></div><div class='fleft'><b>Выполнил: </b>";
+					echo Yii::app()->dateFormatter->format("dd MMMM yyyy", $model->date_instal);
+					echo "</div></div>";
+				}
+			}
+			else {
+				echo "Пользователь не выполнил ни одной работы.";
+			}
+		}
+		if ($job_mashine == 3){
+			$results =Added::model()->findallByAttributes(array('user_id_aoi'=>$id_user), array('order' => 'date_aoi desc', 'limit' => 10));
+			if($results){
+				foreach ($results as $model) {
+					echo "<div class='_fclear'><div class='fleft number_memo'><a href='/index.php?r=added/view&id=$model->id'>Служебная записка № ";
+					echo CHtml::encode($model->number_memo);
+					echo "</a></div><div class='fleft'><b>Выполнил: </b>";
+					echo Yii::app()->dateFormatter->format("dd MMMM yyyy", $model->date_aoi);
+					echo "</div></div>";
+				}
+			} 
+			else {
+				echo "Пользователь не выполнил ни одной работы.";
+			}
+		}
+	} 	
+
 	
 }

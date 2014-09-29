@@ -29,11 +29,11 @@ class UserController extends Controller
 		return array(
 			
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update'),
-				'roles'=>array('opeartor'),
+				'actions'=>array('update','view'),
+				'roles'=>array('operator'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update'),
+				'actions'=>array('update','view'),
 				'roles'=>array('viewer'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions

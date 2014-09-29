@@ -81,7 +81,7 @@ padding: 0px; margin: 0px; text-align: right;
 
  #mainmenu ul li.active a
  {
-	color: #6BCAFF;
+	color: #61AE73;
 }
 
 div.flash-error, div.flash-notice, div.flash-success
@@ -183,7 +183,7 @@ div.search-form
 	font-size:0.9em;
 	margin: 0 0 15px 0;
 	padding: 5px 8px;
-	background:#EFFDFF;
+	background:#EAFBF1;
 }
 
 .portlet-content ul
@@ -255,21 +255,21 @@ input[type="submit"] {background-color: #DC5041; color: #fff; padding: 7px 10px;
 	
 	body .right {float: right; padding: 10px; width: 750px} 
 		body .right .item  {padding: 10px;margin-bottom: 0px}
-		body .right .item a {color: #42688f; text-decoration: none}
+		body .right .item a {color: #457D52; text-decoration: none}
 			body .right .item a:hover {text-decoration: underline}
 		body .right .item  .item_info {color: #555; font-size: 12px; margin-bottom: 10px}
 		body .right .item a.fright:hover {text-decoration: none}
-		body .right .item .block_id {background-color: #6091C3; padding: 5px 10px; font-size: 14px; color: #fff; font-weight: bold}
+		body .right .item .block_id {background-color: #457D52; padding: 5px 10px; font-size: 14px; color: #fff; font-weight: bold}
 		body .right .item .edit {float: right; margin-right: 10px;}
-			body .right .item .edit a {font-style: italic;}
-				body .right .item .edit a:hover {text-decoration: none; color: #71777a}
+			body .right .item .edit a {font-size: 11px;}
+				body .right .item .edit a:hover {color: #71777a}
 			body .right .item .block_id a{text-decoration: none;}
-			body .right .item .block_id:hover {background-color: #4997E4}
+			body .right .item .block_id:hover {background-color: #61AE73}
 		body .right .item .date_add {margin-left: 10px; font-size: 11px}
 		body .right .item .number {float: left; font-size: 18px; }
 		body .right .item .date_note {float: left; padding: 5px 0 0 20px; color: #76624d; font-size: 12px}
 		body .right .item .note {padding: 10px 0 20px 0; line-height: 1.4em;}
-		body .right .item .footer_note {background-color: #F5F9FF; height: 130px}
+		body .right .item .footer_note {background-color: #EAFBF1; height: 130px}
 		.item .lal {float: left; width: 29%; margin: 0 2%; line-height: 1.6em; font-size: 12px; height: 100px; }
 		.item  .title {border-bottom: 1px solid #ddd; text-transform: uppercase; font-size: 18px; color: #444; font-weight: bold; margin-bottom: 10px; padding: 15px 0 2px 0 !important;}
 		

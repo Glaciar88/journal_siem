@@ -165,7 +165,7 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 
 	#added-form select {padding: 7px 7px; }
 	#added-form textarea {font-size: 16px; width: 750px; height: 200px}
-	.number_memo {float: left; width: 350px; margin-right: 20px; font-size: 20px;}
+	form .number_memo {float: left; width: 350px; margin-right: 20px; font-size: 20px;}
 		.number_memo #Added_number_memo {padding: 3px 10px; width: 60px; font-size: 18px; margin-left: 4px}
 	.date_memo {float: left; width: 350px; font-size: 14px;}
 		.date_memo #Added_date_memo {padding: 3px 10px; margin-left: 4px}
@@ -185,10 +185,14 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 	#User_role {padding: 5px 5px; font-size: 14px; width: 268px; margin-top: 3px}
 	.user_form_left {float: left; width: 120px; line-height: 36px}
 	.user_form_right {float: left; width: 270px; line-height: 36px}
-	.view > ._fclear > .title > a {font-size: 18px; text-decoration: none; color: #7FA4B8;}
-		.view > ._fclear > .title > a:hover {color: #48A3D5;}
+	.view > ._fclear > .title > a {font-size: 18px; padding-left: 5px; text-decoration: none; color: #457D52;}
+		.view > ._fclear > .title > a:hover {color: #61AE73;}
 	.view > ._fclear > .fright {color: #B05627;}
-	.view > ._fclear > .mtitle {margin: 10px 0 20px 0; padding: 10px 5px; font-size: 16px; border: none; background-color: #B3DDEA;}
-	.view > ._fclear > .fleft span {margin: 0 75px;}
-	
+	.view > .jobs {margin: 5px 0 10px 0; padding: 10px 5px; font-size: 16px; border: none; background-color: #C4E4C9; color: #222; font-weight: bold;}
+	.view > .jobs > span {margin: 0 25px; color: #333; font-size: 14px}
+	.listJob {font-size: 14px; background-color: #F8F8F7; padding: 10px}
+		.listJob  .number_memo {padding: 3px 15px; color: #333; width: 210px}
+		.listJob h2 {padding: 5px 0; margin: 10px 0; font-size: 25px; background-color: #C4E4C9; text-align: center; color: #222}
+		.listJob .title {font-size: 18px; text-transform: uppercase; margin: 15px 0 5px 0; background-color: #C4E4C9; text-align: center; color: #222; width: 450px; padding: 5px 0}
+		.listJob .warningUser {margin: 10px auto; font-size: 16px; text-align: center; color: #F35866;}
 	

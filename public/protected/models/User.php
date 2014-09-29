@@ -165,5 +165,18 @@ class User extends CActiveRecord
 		return true;
 	}
 	
+	public function userRole($role){
+		switch ($role){
+			case operator:
+				echo "Оператор"; 
+				break; 
+			case administrator:
+				echo "Администратор"; 
+				break; 
+			case viewer:
+				echo "Пользователь";
+			return false;
+		} 
+	}
 
 }
