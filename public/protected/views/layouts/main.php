@@ -54,7 +54,7 @@ date_default_timezone_set("Europe/Moscow");?>
 	</div><!-- mainmenu -->
 	<div class="_fclear level">
 		<div class="left">
-			
+			<div class="menuSide"><?php Terminals::menuSide(); ?></div>
 		</div>
 		<div class="right">
 			<div class="_fclear">

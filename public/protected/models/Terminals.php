@@ -91,4 +91,18 @@ class Terminals extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public static function menuSide()
+	{
+		$results = Terminals::model()->findAll(array('order' => 'name'));
+		if($results){
+			echo "<ul id='sideMenu' class='sample-menu'>";
+			foreach ($results as $model) {
+				echo "<li><a href='#' class='rmenu'><span></span>$model->name</a>";
+				Blocks::menuSide($model->id);
+				echo "</li>";
+			}
+			echo "</ul>";
+		}
+	}
 }
