@@ -128,10 +128,32 @@ class AddedController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Added');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+		$block_id = Yii::app()->request->getQuery('block_id');
+		if ($block_id) $condition = 'block_id='.intval($block_id);
+		else $condition = '';
+		$dataProvider=new CActiveDataProvider('Added', array(
+			//Настройки для сортировки
+			'sort'=>array(
+			'attributes'=>array(
+				'date_add'=>array(
+					'asc'=>'date_add ASC',
+					'desc'=>'date_add DESC',
+					'default'=>'desc',
+				)
+			),
+			'defaultOrder'=>array('date_add'=>CSort::SORT_DESC)),
+			//Критерий для запроса.
+			'criteria'=>array('condition'=> $condition),
+			//Настройки для постраничной навигации
+			'pagination'=>array(
+				//Количество отзывов на страницу
+				'pageSize'=>5,
+				'pageVar'=>'page',
+            ),
 		));
+			$this->render('index',array(
+				'dataProvider'=>$dataProvider,
+			));
 	}
 
 	/**

@@ -32,6 +32,7 @@ class Added extends CActiveRecord
         return Yii::app()->createUrl('added/view', array(
             'id'=>$this->id,
             'number_memo'=>$this->number_memo,
+			'block_id'=>$this->block_id,
         ));
     }
 	/**

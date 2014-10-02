@@ -92,14 +92,39 @@ class Terminals extends CActiveRecord
 		return parent::model($className);
 	}
 	
+
+	
 	public static function menuSide()
 	{
 		$results = Terminals::model()->findAll(array('order' => 'name'));
 		if($results){
 			echo "<ul id='sideMenu' class='sample-menu'>";
 			foreach ($results as $model) {
-				echo "<li><a href='#' class='rmenu'><span></span>$model->name</a>";
-				Blocks::menuSide($model->id);
+				$block_name = $model->name;
+				$results_block = Blocks::model()->findallByAttributes(array('terminals_id'=>$model->id), array('order' => 'name')); //получаем массив с элементами относящиеся к терминалу с id_terminal
+				$post_id = Yii::app()->getRequest()->getQuery('id'); //Получаем id записи (при просмотре)
+				$block_id = Yii::app()->request->getQuery('block_id'); //Получаем block_id (при фильтрации записей)
+				$post=Added::model()->findByAttributes(array('id'=>$post_id)); //строка записи id=post_id
+				if($results_block){
+					$ul_style = "<ul>";
+					foreach ($results_block as $model) { //цикл для проверки на совпадение
+						if ($block_id == $model->id || $post->block_id == $model->id){
+							$ul_style = "<ul style='display: block;'>";	
+							$a_name = "expanded";
+						}
+					}
+				}
+				echo "<li><a href='#' class='rmenu' name='" . $a_name . "'><span></span>$block_name</a>";
+					if($results_block){
+						echo $ul_style; 
+						foreach ($results_block as $model) {	//цикл добавления пунктов меню
+							echo "<li>";
+							echo CHtml::link($model->name, array('/added', 'view'=>'index', 'block_id'=>$model->id));
+							echo "</li>";
+						}
+						echo "</ul>";
+					}
+					$a_style = "";
 				echo "</li>";
 			}
 			echo "</ul>";

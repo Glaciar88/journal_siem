@@ -286,7 +286,7 @@ input[type="submit"] {background-color: #DC5041; color: #fff; padding: 7px 10px;
 	.warning > .fleft span, .help > .fleft span{font-size: 20px; position: relative; top: 28px; padding: 15px 5px}
 	.menuSide {}
 		.menuSide ul.sample-menu {padding: 0; margin: 10px 10px; }
-			.menuSide ul.sample-menu li {padding: 2px 0; margin: 0; list-style: none;}
+			.menuSide ul.sample-menu li {padding: 2px 0; margin: 0; list-style: none; letter-spacing: 1px}
 				.menuSide ul.sample-menu li ul {padding: 0; margin: 5px 0 5px 15px; }
 					.menuSide ul#sideMenu li > a {color: #337541;}
 						.menuSide ul#sideMenu li > a:hover {color: #73CE27;}
@@ -294,6 +294,7 @@ input[type="submit"] {background-color: #DC5041; color: #fff; padding: 7px 10px;
 						.menuSide ul.sample-menu li ul a:hover {text-decoration: underline !important;}
 			.menuSide ul#sideMenu a {padding-left: 8px; margin: 0; padding: 0; text-decoration: none;}
 				.menuSide ul#sideMenu a.collapsed span:before {content: '+'; display: block; height: 0px; position: relative; left: -13px; top: -1px}
+				.menuSide ul#sideMenu a.expanded {font-weight: bold}
 				.menuSide ul#sideMenu a.expanded span:before {content: '-'; display: block; height: 0px; position: relative; left: -13px; top: -1px}
 				.menuSide ul#sideMenu a + ul {display: none;}
 

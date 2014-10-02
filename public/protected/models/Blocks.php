@@ -125,16 +125,5 @@ class Blocks extends CActiveRecord
             self::$_items[$type][$model->code]=$model->name;
     }
 	
-	public static function menuSide($id_terminal)
-	{
-		$results = Blocks::model()->findallByAttributes(array('terminals_id'=>$id_terminal), array('order' => 'name'));
-		if($results){
-			echo "<ul>";
-			foreach ($results as $model) {
-				echo "<a href='#'><li>$model->name</li></a>";
-			}
-			echo "</ul>";
-		}
-	}
 
 }
