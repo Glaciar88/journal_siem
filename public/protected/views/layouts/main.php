@@ -39,8 +39,18 @@ date_default_timezone_set("Europe/Moscow");?>
 			<div class="profile">
 				<ul id="prof_menu">
 					<?php if (Yii::app()->user->id) {
-						echo "<li>Вы вошли как "; echo Yii::app()->user->name.''; echo "<ul><li>"; echo CHtml::link('Сменить пароль', array('user/update', 'id'=>Yii::app()->user->id)); echo "</li>"; ?>
-						<?php if (Yii::app()->user->role == 'administrator') {echo "<li>"; echo CHtml::link('Пользователи', array('user/index')); echo "</li>";} ?>  
+						echo "<li>Вы вошли как "; echo Yii::app()->user->name.''; echo "<ul><li>"; echo CHtml::link('Сменить пароль', array('user/update', 'id'=>Yii::app()->user->id)); echo "</li>"; 
+						if (Yii::app()->user->role == 'operator' || Yii::app()->user->role == 'administrator') {
+							echo "<li>"; echo CHtml::link('Добавить терминал', array('terminals/create')); echo "</li>";
+							echo "<li>"; echo CHtml::link('Добавить блок', array('blocks/create')); echo "</li>";
+						}?>
+						<?php 
+							if (Yii::app()->user->role == 'administrator') {
+								echo "<li>"; echo CHtml::link('Пользователи', array('user/index')); echo "</li>";
+								echo "<li>"; echo CHtml::link('Терминалы', array('/terminals/index')); echo "</li>";
+								echo "<li>"; echo CHtml::link('Блоки', array('/blocks/index')); echo "</li>";
+							}
+						?>  
 						<?php echo "<li>"; echo CHtml::link('Выйти', array('/site/logout'));  echo "</li></ul>"; 
 						}
 						else {
@@ -53,7 +63,7 @@ date_default_timezone_set("Europe/Moscow");?>
 		</div>
 	</div><!-- mainmenu -->
 	<div class="_fclear level">
-		<div class="left">
+		<div class="left"> 
 			<div class="menuSide"><?php Terminals::menuSide(); ?></div>
 		</div>
 		<div class="right">

@@ -51,7 +51,7 @@ class Terminals extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
+			'name' => 'Название',
 		);
 	}
 
@@ -92,7 +92,6 @@ class Terminals extends CActiveRecord
 		return parent::model($className);
 	}
 	
-
 	
 	public static function menuSide()
 	{
@@ -102,7 +101,9 @@ class Terminals extends CActiveRecord
 			foreach ($results as $model) {
 				$block_name = $model->name;
 				$results_block = Blocks::model()->findallByAttributes(array('terminals_id'=>$model->id), array('order' => 'name')); //получаем массив с элементами относящиеся к терминалу с id_terminal
-				$post_id = Yii::app()->getRequest()->getQuery('id'); //Получаем id записи (при просмотре)
+				$r = Yii::app()->getRequest()->getQuery('r');
+				if ($r == 'added/view'){
+				$post_id = Yii::app()->getRequest()->getQuery('id');} //Получаем id записи (при просмотре)
 				$block_id = Yii::app()->request->getQuery('block_id'); //Получаем block_id (при фильтрации записей)
 				$post=Added::model()->findByAttributes(array('id'=>$post_id)); //строка записи id=post_id
 				if($results_block){
@@ -115,11 +116,16 @@ class Terminals extends CActiveRecord
 					}
 				}
 				echo "<li><a href='#' class='rmenu' name='" . $a_name . "'><span></span>$block_name</a>";
+				$a_name = "";
 					if($results_block){
 						echo $ul_style; 
 						foreach ($results_block as $model) {	//цикл добавления пунктов меню
 							echo "<li>";
-							echo CHtml::link($model->name, array('/added', 'view'=>'index', 'block_id'=>$model->id));
+							if ($block_id == $model->id || $post->block_id == $model->id){
+								echo CHtml::link($model->name, array('/added', 'view'=>'index', 'block_id'=>$model->id), array('style'=>'color: #73CE27; font-weight: bold'));
+							} else {
+								echo CHtml::link($model->name, array('/added', 'view'=>'index', 'block_id'=>$model->id));
+							}
 							echo "</li>";
 						}
 						echo "</ul>";

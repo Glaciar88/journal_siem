@@ -1,6 +1,6 @@
 <?php
 
-class AddedController extends Controller
+class BlocksController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -27,24 +27,19 @@ class AddedController extends Controller
 	public function accessRules()
 	{
 		return array(
-			//array('allow',  // allow all users to perform 'index' and 'view' actions
-			//	'actions'=>array(),
-			//	'users'=>array('*'),
-		//	),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view'),
+				'actions'=>array('create'),
 				'roles'=>array('operator'),
 			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','view'),
-				'roles'=>array('viewer'),
-			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','create','update','index','view'),
+				'actions'=>array('admin','delete','create','index','update'),
 				'roles'=>array('administrator'),
 			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
+			array('deny',
+                'users'=>array('*'),
+			),
+			array('deny',
+                'roles'=>array('viewer'),
 			),
 		);
 	}
@@ -66,23 +61,21 @@ class AddedController extends Controller
 	 */
 	public function actionCreate()
 	{
-		
-		$model=new Added;
+		$model=new Blocks;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Added']))
+		if(isset($_POST['Blocks']))
 		{
-			$model->attributes=$_POST['Added'];
+			$model->attributes=$_POST['Blocks'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect('index.php?r=added&view=index');
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
-		
 	}
 
 	/**
@@ -97,9 +90,9 @@ class AddedController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Added']))
+		if(isset($_POST['Blocks']))
 		{
-			$model->attributes=$_POST['Added'];
+			$model->attributes=$_POST['Blocks'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -128,32 +121,28 @@ class AddedController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$block_id = Yii::app()->request->getQuery('block_id');
-		if ($block_id) $condition = 'block_id='.intval($block_id);
-		else $condition = '';
-		$dataProvider=new CActiveDataProvider('Added', array(
+		$dataProvider=new CActiveDataProvider('Blocks', array(
 			//Настройки для сортировки
 			'sort'=>array(
 			'attributes'=>array(
-				'date_add'=>array(
-					'asc'=>'date_add ASC',
-					'desc'=>'date_add DESC',
-					'default'=>'desc',
+				'name'=>array(
+					'asc'=>'name ASC',
+					'desc'=>'name DESC',
+					'default'=>'asc',
 				)
 			),
-			'defaultOrder'=>array('date_add'=>CSort::SORT_DESC)),
+			'defaultOrder'=>array('name'=>CSort::SORT_ASC)),
 			//Критерий для запроса.
-			'criteria'=>array('condition'=> $condition),
 			//Настройки для постраничной навигации
 			'pagination'=>array(
 				//Количество записей на страницу
-				'pageSize'=>5,
+				'pageSize'=>20,
 				'pageVar'=>'page',
             ),
 		));
-			$this->render('index',array(
-				'dataProvider'=>$dataProvider,
-			));
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
 	}
 
 	/**
@@ -161,10 +150,10 @@ class AddedController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Added('search');
+		$model=new Blocks('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Added']))
-			$model->attributes=$_GET['Added'];
+		if(isset($_GET['Blocks']))
+			$model->attributes=$_GET['Blocks'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -175,24 +164,24 @@ class AddedController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Added the loaded model
+	 * @return Blocks the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Added::model()->findByPk($id);
+		$model=Blocks::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'Запрашиваемая страница не существует.');
+			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Added $model the model to be validated
+	 * @param Blocks $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='added-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='blocks-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

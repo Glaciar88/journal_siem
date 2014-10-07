@@ -276,10 +276,10 @@ input[type="submit"] {background-color: #DC5041; color: #fff; padding: 7px 10px;
 	body .menu {float: left; margin-left: 630px}
 	body .profile {float: left;}
 	.profile ul, .profile li { margin:0; padding:0; list-style-type:none;}
-	#prof_menu {display:block; position: absolute; }
- 	#prof_menu > li {display:inline-block; color: #ddd; height:30px; position:relative;}
- 	#prof_menu > li > ul {position:absolute; top:33px; display:none;}
-		#prof_menu > li > ul li {background-color: #333; width: 100px; left: -10px; text-align: center; border-top: 1px solid #555}
+	#prof_menu {display:block; position: absolute; z-index: 1000;}
+ 	#prof_menu > li {display:inline-block; color: #ddd; position:relative;}
+ 	#prof_menu > li > ul {position:absolute; top:33px; display: none;}
+		#prof_menu > li > ul li {background-color: #333; width: 120px; left: -10px; text-align: center; border-top: 1px solid #555}
  	#prof_menu > li:hover > ul {display:block;}
 	.warning {margin-top: 45px}
 	.warning > .fleft > img, .help > .fleft > img {width: 60px; padding: 10px 5px 10px 0}
@@ -287,16 +287,26 @@ input[type="submit"] {background-color: #DC5041; color: #fff; padding: 7px 10px;
 	.menuSide {}
 		.menuSide ul.sample-menu {padding: 0; margin: 10px 10px; }
 			.menuSide ul.sample-menu li {padding: 2px 0; margin: 0; list-style: none; letter-spacing: 1px}
-				.menuSide ul.sample-menu li ul {padding: 0; margin: 5px 0 5px 15px; }
+				.menuSide ul.sample-menu li ul {padding: 0; margin: 5px 0 5px 20px; }
 					.menuSide ul#sideMenu li > a {color: #337541;}
 						.menuSide ul#sideMenu li > a:hover {color: #73CE27;}
 					.menuSide ul.sample-menu li ul a {color: #5F9C2B;}
 						.menuSide ul.sample-menu li ul a:hover {text-decoration: underline !important;}
 			.menuSide ul#sideMenu a {padding-left: 8px; margin: 0; padding: 0; text-decoration: none;}
 				.menuSide ul#sideMenu a.collapsed span:before {content: '+'; display: block; height: 0px; position: relative; left: -13px; top: -1px}
-				.menuSide ul#sideMenu a.expanded {font-weight: bold}
 				.menuSide ul#sideMenu a.expanded span:before {content: '-'; display: block; height: 0px; position: relative; left: -13px; top: -1px}
 				.menuSide ul#sideMenu a + ul {display: none;}
-
-	
-	
+	.list-blocks, .list-terminals {height: 20px; overflow: hidden;}			
+	.list-blocks span, .list-terminals span {margin-right: 10px}
+	.list-blocks span.term {margin-left: 20px; font-size: 12px}
+		.list-blocks .fright a, .list-terminals .fright a  {font-size: 12px; margin-left: 10px}
+		.list-blocks .fleft , .list-terminals .fleft {color: #DF6868}
+		
+	.grid-view table.items th {background: #333 !important; height: 20px}
+	.blocks-grid_c0, .terminals-grid_c0, .added-grid_c0 {width: 40px}
+	.grid-view table.items tr:hover.selected, .grid-view table.items tr.selected, .grid-view table.items tr.odd.selected  {background: #4AB55E !important; color: #fff !important;}
+	.grid-view table.items tr.odd {background: #BBE2C2 !important;}
+	ul.yiiPager a:link, ul.yiiPager a:visited {border: solid 1px #4BA744 !important; color: #245A20 !important}
+	ul.yiiPager .hidden a {border: solid 1px #DEDEDE !important;color: #888888 !important;}
+	ul.yiiPager .selected a  {background: #53B34D !important; color: #fff !important;}
+	ul.yiiPager a:hover{border:solid 1px #86DC84 !important;}

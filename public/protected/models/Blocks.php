@@ -53,8 +53,8 @@ class Blocks extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'terminals_id' => 'Terminals',
+			'name' => 'Название',
+			'terminals_id' => 'Терминал',
 		);
 	}
 
@@ -124,6 +124,13 @@ class Blocks extends CActiveRecord
         foreach($models as $model)
             self::$_items[$type][$model->code]=$model->name;
     }
+	
+	public static function terminalName($terminals_id)
+    {
+		$terminal = Terminals::model()->findByPk($terminals_id);
+		return $terminal ? $terminal->name : 'Терминал не найден';
+		
+	}
 	
 
 }

@@ -159,8 +159,10 @@ class Added extends CActiveRecord
 	{
 		if(parent::beforeSave()) {
 			// Отсылать id пользователя и дату с временем создания документа
-			$this->user_id_add=Yii::app()->user->id;
-			$this->date_add = new CDbExpression('NOW()');
+			if ($this->scenario === 'insert') {
+				$this->user_id_add=Yii::app()->user->id;
+				$this->date_add = new CDbExpression('NOW()');
+			}
 			if ($this->job_print == 0 || $this->job_print == 1){
 				$this->date_print = null;
 				$this->user_id_print = null;

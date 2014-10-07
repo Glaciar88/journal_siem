@@ -181,8 +181,8 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 
 	.buttons {padding-top: 20px}
 	
-	#User_username, #User_name, #User_password, #User_password_old, #User_password_new, #User_password_rep {padding: 5px 7px; font-size: 14px; width: 250px; margin-top: 3px}
-	#User_role {padding: 5px 5px; font-size: 14px; width: 268px; margin-top: 3px}
+	#user-form #User_username, #blocks-form #Blocks_name, #terminals-form #Terminals_name,#user-form   #User_name,#user-form  #User_password, #user-form #User_password_old, #user-form  #User_password_new,#user-form  #User_password_rep {padding: 5px 7px; font-size: 14px; width: 250px; margin-top: 3px}
+	#user-form #User_role, #blocks-form #Blocks_terminals_id {padding: 5px 5px; font-size: 14px; width: 268px; margin-top: 3px}
 	.user_form_left {float: left; width: 120px; line-height: 36px}
 	.user_form_right {float: left; width: 270px; line-height: 36px}
 	.view > ._fclear > .title > a {font-size: 18px; padding-left: 5px; text-decoration: none; color: #457D52;}
