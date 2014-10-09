@@ -40,7 +40,7 @@
 		<?php echo $form->textArea($model,'note'); ?>
 		<?php echo $form->error($model,'note'); ?>
 	</div>
-	
+	<?php echo $form->error($model,'job'); ?>
 	<div class="mtitle">Принтер MY500</div>
 	<div class="mash_item _fclear">
 		<div class="row col">

@@ -23,7 +23,7 @@
  */
 class Added extends CActiveRecord
 {
-	
+
 	/**
 	 * Добавление свойства url
 	 */
@@ -174,6 +174,53 @@ class Added extends CActiveRecord
 			if ($this->job_aoi == 0 || $this->job_aoi == 1){
 				$this->date_aoi = null;
 				$this->user_id_aoi = null;
+			}
+			
+			$timestamp = date("Ymd");
+			if ($this->job_print == 2) {
+				if(CDateTimeParser::parse($this->date_print,'yyyy-MM-dd')!==false){
+					$date_print = date("Ymd", strtotime($this->date_print));
+					if ($date_print>$timestamp){
+						$this->addError($attribute, Yii::t('job', 'Дата выполненной работы не должна быть позднее сегодняшнего дня')); 
+						return false;
+					}
+				} else {
+					$this->addError($attribute, Yii::t('job', 'Проверьте формат введенной даты (Пример: 2014-01-31)')); 
+					return false;
+				}
+			}
+			if ($this->job_instal == 2) {
+				if(CDateTimeParser::parse($this->date_instal,'yyyy-MM-dd')!==false){
+					$date_instal = date("Ymd", strtotime($this->date_instal));
+					if ($date_instal>$timestamp){
+						$this->addError($attribute, Yii::t('job', 'Дата выполненной работы не должна быть позднее сегодняшнего дня')); 
+						return false;
+					}
+				} else {
+					$this->addError($attribute, Yii::t('job', 'Проверьте формат введенной даты (Пример: 2014-01-31)')); 
+					return false;
+				}
+			}
+			if ($this->job_aoi == 2) {
+				if(CDateTimeParser::parse($this->date_aoi,'yyyy-MM-dd')!==false){
+					$date_aoi = date("Ymd", strtotime($this->date_aoi));
+					if ($date_aoi > $timestamp){
+						$this->addError($attribute, Yii::t('job', 'Дата выполненной работы не должна быть позднее сегодняшнего дня')); 
+						return false;
+					}
+				} else {
+					$this->addError($attribute, Yii::t('job', 'Проверьте формат введенной даты (Пример: 2014-01-31)')); 
+					return false;
+				}
+			}
+			
+			if (($this->job_print == 2 & $this->user_id_print == null) || ($this->job_instal == 2 & $this->user_id_instal == null) || ($this->job_aoi == 2 & $this->user_id_aoi == null)){
+				$this->addError($attribute, Yii::t('job', 'При выполненной работе необходимо заполнить все поля'));
+				return false;
+			}
+			if (($this->job_print == 2 & $this->date_print === '') || ($this->job_instal == 2 & $this->date_instal === '') || ($this->job_aoi == 2 & $this->date_aoi === '')){
+				$this->addError($attribute, Yii::t('job', 'При выполненной работе необходимо заполнить все поля'));
+				return false;
 			}
 			return true; // Если следует продолжить вставку записи
 		} else {

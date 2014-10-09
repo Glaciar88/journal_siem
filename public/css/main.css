@@ -72,6 +72,7 @@ padding: 0px; margin: 0px; text-align: right;
 	color:#fff;
 	font-size:12px;
 	text-decoration:none;
+	font-weight: bold;
 }
 
 #mainmenu ul li a:hover
@@ -81,7 +82,8 @@ padding: 0px; margin: 0px; text-align: right;
 
  #mainmenu ul li.active a
  {
-	color: #61AE73;
+	color: #8AC798;
+	
 }
 
 div.flash-error, div.flash-notice, div.flash-success

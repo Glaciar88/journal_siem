@@ -92,7 +92,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Найти'); ?>
+		<?php echo CHtml::submitButton('Поиск'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -27,10 +27,10 @@ date_default_timezone_set("Europe/Moscow");?>
 	<div id="mainmenu">
 		<div class="level _fclear">
 			<div class="menu">
-				<?php $this->widget('zii.widgets.CMenu',array(
+				<?php $this->widget('ext.zii.widgets.Menu',array(
 					'items'=>array(
 						array('label'=>'Главная', 'url'=>array('/site/index')),
-						array('label'=>'Записи', 'url'=>array('/added', 'view'=>'index')),
+						array('label'=>'Записи', 'url'=>array('/added')),
 						array('label'=>'О сервисе', 'url'=>array('/site/page', 'view'=>'about')),
 					),
 				));
@@ -46,7 +46,7 @@ date_default_timezone_set("Europe/Moscow");?>
 						}?>
 						<?php 
 							if (Yii::app()->user->role == 'administrator') {
-								echo "<li>"; echo CHtml::link('Пользователи', array('user/index')); echo "</li>";
+								echo "<li>"; echo CHtml::link('Пользователи', array('/user/index')); echo "</li>";
 								echo "<li>"; echo CHtml::link('Терминалы', array('/terminals/index')); echo "</li>";
 								echo "<li>"; echo CHtml::link('Блоки', array('/blocks/index')); echo "</li>";
 							}

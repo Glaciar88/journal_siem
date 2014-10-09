@@ -32,7 +32,7 @@ class AddedController extends Controller
 			//	'users'=>array('*'),
 		//	),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view'),
+				'actions'=>array('create','update','index','view','copy'),
 				'roles'=>array('operator'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -40,7 +40,7 @@ class AddedController extends Controller
 				'roles'=>array('viewer'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','create','update','index','view'),
+				'actions'=>array('admin','delete','create','update','index','view','copy'),
 				'roles'=>array('administrator'),
 			),
 			array('deny',  // deny all users
@@ -64,11 +64,23 @@ class AddedController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id = NULL)
 	{
 		
 		$model=new Added;
-
+		if (isset($id)) {
+            $model->attributes = $this->loadModel($id)->attributes;
+            $model->id = NULL;
+			$model->job_print = 0;
+			$model->date_print = NULL;
+			$model->user_id_print = NULL;
+			$model->job_instal = 0;
+			$model->date_instal = NULL;
+			$model->user_id_instal = NULL;
+			$model->job_aoi = 0;
+			$model->date_aoi = NULL;
+			$model->user_id_aoi = NULL;
+        }
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -108,6 +120,7 @@ class AddedController extends Controller
 			'model'=>$model,
 		));
 	}
+	
 
 	/**
 	 * Deletes a particular model.
