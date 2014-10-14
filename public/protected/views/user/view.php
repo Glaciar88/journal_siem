@@ -6,11 +6,16 @@ $this->breadcrumbs=array(
 	'Пользователи'=>array('index'),
 	$model->name,
 );
-
-$this->menu=array(
-	array('label'=>'Список пользователей', 'url'=>array('index')),
-	
-);
+if (Yii::app()->user->role == 'administrator') {
+	$this->menu=array(
+		array('label'=>'Список пользователей', 'url'=>array('index')),
+		array('label'=>'Сменить пароль', 'url'=>array('update', 'id'=>$model->id)),
+	);
+} else {
+	$this->menu=array(
+		array('label'=>'Список пользователей', 'url'=>array('index')),
+	);
+}
 ?>
 <div class="listJob">
 	<h1>Просмотр пользователя №<?php echo $model->id; ?></h1>

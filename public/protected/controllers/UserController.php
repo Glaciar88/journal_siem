@@ -29,11 +29,11 @@ class UserController extends Controller
 		return array(
 			
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update','view'),
+				'actions'=>array('update'),
 				'roles'=>array('operator'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update','view'),
+				'actions'=>array('update'),
 				'roles'=>array('viewer'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -96,7 +96,7 @@ class UserController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('added/index'));
 		}
 
 		$this->render('update',array(

@@ -250,7 +250,7 @@ input[type="submit"] {background-color: #DC5041; color: #fff; padding: 7px 10px;
 .false {background-color: red; color: #fff; padding: 3px 4px; font-weight: bold;}
 .true {background-color: green; color: #fff; padding: 3px 4px; font-weight: bold;}
 .none {background-color: #ff8400; color: #fff; padding: 3px 4px; font-weight: bold;}
-
+.false_znak{color: red}
 
 	body .left {float: left; width: 200px; padding: 10px}
 	
@@ -312,3 +312,7 @@ input[type="submit"] {background-color: #DC5041; color: #fff; padding: 7px 10px;
 	ul.yiiPager .hidden a {border: solid 1px #DEDEDE !important;color: #888888 !important;}
 	ul.yiiPager .selected a  {background: #53B34D !important; color: #fff !important;}
 	ul.yiiPager a:hover{border:solid 1px #86DC84 !important;}
+	.about {line-height: 20px}
+		.about .a-desc {background: #EFFFDB; padding: 10px; color: #222;}
+		.about .error {color: red}
+		.about img {width: 730px; display: block; margin: 20px auto;}

@@ -4,7 +4,7 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<h1>Добро пожалоловать в <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+
 
 <div class="warning _fclear">
 	<div class="fleft"><img src="images/warning.png" /></div>

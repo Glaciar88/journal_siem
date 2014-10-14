@@ -42,7 +42,7 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('username, name, role, password', 'required', 'on'=>'insert'),
-			array('password_old, password_new, password_rep', 'required', 'on'=>'update'),
+			array('password_new, password_rep', 'required', 'on'=>'update'),
 			array('password_old', 'PasswordValid'),
 			array('password', 'unsafe', 'on'=>'update'),
 			array('username', 'length', 'max'=>50),
@@ -155,12 +155,21 @@ class User extends CActiveRecord
 	public function PasswordValid()
 	{
 		if ($this->scenario === 'update') {
-			$password = $this->password_old;
-			if (CPasswordHelper::verifyPassword($password,$this->password)) {
+			if (Yii::app()->user->role === 'administrator') {
 				return true;
-			}else {
-			$this->addError($attribute, Yii::t('password_old', 'Неверный пароль'));
-			return false;}
+			} else {
+				if ($this->password_old === ''){
+					$this->addError($attribute, Yii::t('password_old', 'Все поля должны быть заполнены. Проверьте поле старый пароль'));
+					return false;
+				}
+				$password = $this->password_old;
+				if (CPasswordHelper::verifyPassword($password,$this->password)) {
+					return true;
+				}else {
+					$this->addError($attribute, Yii::t('password_old', 'Неверный пароль'));
+					return false;
+				}
+			}
 		}
 		return true;
 	}

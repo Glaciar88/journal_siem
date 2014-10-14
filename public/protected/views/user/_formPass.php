@@ -17,23 +17,24 @@
 
 
 	<?php echo $form->errorSummary($model); ?>
-
+<?php if (Yii::app()->user->role != 'administrator') { ?>
 	<div class="row _fclear">
 		<div class="user_form_left">
-			<?php echo $form->labelEx($model,'password_old'); ?>
+			<?php echo $form->labelEx($model,'password_old'); ?><span class='false_znak'>*</span>
 		</div>
 		<div class="user_form_right">
 			<?php echo $form->textField($model,'password_old'); ?>
 			<?php echo $form->error($model,'password_old'); ?>
 		</div>
 	</div>
+<?php } ?>
 
 	<div class="row _fclear">
 		<div class="user_form_left">
 			<?php echo $form->labelEx($model,'password_new'); ?>
 		</div>
 		<div class="user_form_right">
-			<?php echo $form->textField($model,'password_new'); ?>
+			<?php echo $form->passwordField($model,'password_new'); ?>
 			
 		</div>
 	</div>
@@ -42,7 +43,7 @@
 			<?php echo $form->labelEx($model,'password_rep'); ?>
 		</div>
 		<div class="user_form_right">
-			<?php echo $form->textField($model,'password_rep'); ?>
+			<?php echo $form->passwordField($model,'password_rep'); ?>
 			<?php echo $form->error($model,'password_rep'); ?>
 		</div>
 	</div>

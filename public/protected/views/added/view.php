@@ -6,11 +6,11 @@ $this->breadcrumbs=array(
 	'Записи'=>array('index'),
 	$model->id,
 );
-
+ if (Yii::app()->user->role == 'operator' || Yii::app()->user->role == 'administrator') { 
 $this->menu=array(
 	array('label'=>'Добавить запись', 'url'=>array('create')),
 	
-);
+);}
 ?>
 
 <h1>Просмотр записи №<?php echo $model->id; ?></h1>
@@ -39,7 +39,9 @@ $this->menu=array(
 		<div class="view">
 			<div class="item">
 				<div class="item_info">
-					<span><?php echo CHtml::encode($model->getAttributeLabel('user_id_add')); ?>: <?php echo CHtml::link(CHtml::encode($model->user->name), array('user/view', 'id'=>$model->user->id)); ?></span><span class="date_add"><?php echo Yii::app()->dateFormatter->format('d MMMM yyyy в HH:MM', $model->date_add);?></span><a href="/index.php?r=added&view=index&block_id=<?php echo CHtml::encode($model->block->id); ?>" class="fright"><span class="block_id"><?php echo CHtml::encode($model->block->name); ?></span></a><span class="edit"><?php echo CHtml::link(CHtml::encode($model->getAttributeLabel('Редактировать'), $model->id), array('update', 'id'=>$model->id)); ?></span><span class="edit"><?php echo CHtml::link(CHtml::encode($model->getAttributeLabel('Копировать'), $model->id), array('create', 'id'=>$model->id)); ?></span>
+					<span><?php echo CHtml::encode($model->getAttributeLabel('user_id_add')); ?>: <?php echo CHtml::link(CHtml::encode($model->user->name), array('user/view', 'id'=>$model->user->id)); ?></span><span class="date_add"><?php echo Yii::app()->dateFormatter->format('d MMMM yyyy в HH:MM', $model->date_add);?></span><a href="/index.php?r=added&view=index&block_id=<?php echo CHtml::encode($model->block->id); ?>" class="fright"><span class="block_id"><?php echo CHtml::encode($model->block->name); ?></span></a>
+					<?php if (Yii::app()->user->role == 'operator' || Yii::app()->user->role == 'administrator') { ?><span class="edit"><?php echo CHtml::link(CHtml::encode($model->getAttributeLabel('Редактировать'), $model->id), array('update', 'id'=>$model->id)); ?></span><span class="edit"><?php echo CHtml::link(CHtml::encode($model->getAttributeLabel('Копировать'), $model->id), array('create', 'id'=>$model->id)); ?></span>
+					<?php } ?>
 				</div>
 				<div class="_fclear">
 					<div class="number">№ <?php echo CHtml::encode($model->number_memo); ?></div>

@@ -7,7 +7,9 @@
 
 	<div class="item">
 		<div class="item_info">
-			<span><?php echo CHtml::encode($data->getAttributeLabel('user_id_add')); ?>: <?php echo CHtml::link(CHtml::encode($data->user->name), array('user/view', 'id'=>$data->user->id)); ?></span><span class="date_add"><?php echo Yii::app()->dateFormatter->format('d MMMM yyyy в HH:MM', $data->date_add);?></span><a href="/index.php?r=added&view=index&block_id=<?php echo CHtml::encode($data->block->id); ?>" class="fright"><span class="block_id"><?php echo CHtml::encode($data->block->name); ?></span></a><span class="edit"><?php echo CHtml::link(CHtml::encode($data->getAttributeLabel('Редактировать'), $data->id), array('update', 'id'=>$data->id)); ?></span>
+			<span><?php echo CHtml::encode($data->getAttributeLabel('user_id_add')); ?>: <?php echo CHtml::link(CHtml::encode($data->user->name), array('user/view', 'id'=>$data->user->id)); ?></span><span class="date_add"><?php echo Yii::app()->dateFormatter->format('d MMMM yyyy в HH:MM', $data->date_add);?></span><a href="/index.php?r=added&view=index&block_id=<?php echo CHtml::encode($data->block->id); ?>" class="fright"><span class="block_id"><?php echo CHtml::encode($data->block->name); ?></span></a>
+			<?php if (Yii::app()->user->role == 'operator' || Yii::app()->user->role == 'administrator') { ?><span class="edit"><?php echo CHtml::link(CHtml::encode($data->getAttributeLabel('Редактировать'), $data->id), array('update', 'id'=>$data->id)); ?></span>
+			<?php } ?>
 			<span class="edit"><?php echo CHtml::link(CHtml::encode($data->getAttributeLabel('Подробнее'), $data->id), array('view', 'id'=>$data->id)); ?></span>
 		</div>
 		<div class="_fclear">

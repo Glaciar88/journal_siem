@@ -160,7 +160,7 @@ class AddedController extends Controller
 			//Настройки для постраничной навигации
 			'pagination'=>array(
 				//Количество записей на страницу
-				'pageSize'=>5,
+				'pageSize'=>10,
 				'pageVar'=>'page',
             ),
 		));
