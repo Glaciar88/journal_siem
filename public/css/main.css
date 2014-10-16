@@ -285,7 +285,7 @@ input[type="submit"] {background-color: #DC5041; color: #fff; padding: 7px 10px;
  	#prof_menu > li:hover > ul {display:block;}
 	.warning {margin-top: 45px}
 	.warning > .fleft > img, .help > .fleft > img {width: 60px; padding: 10px 5px 10px 0}
-	.warning > .fleft span, .help > .fleft span{font-size: 20px; position: relative; top: 28px; padding: 15px 5px}
+	.warning > .fleft span, .help > .fleft span{font-size: 18px; position: relative; top: 30px; padding: 15px 5px}
 	.menuSide {}
 		.menuSide ul.sample-menu {padding: 0; margin: 10px 10px; }
 			.menuSide ul.sample-menu li {padding: 2px 0; margin: 0; list-style: none; letter-spacing: 1px}

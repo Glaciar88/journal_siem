@@ -1,0 +1,1 @@
+<?php/* @var $this SiteController */$this->pageTitle=Yii::app()->name . ' - График работы';$this->breadcrumbs=array(	'График работы',);?><div class="schedule">	<h1>График работы по месяцам на 2014 год</h1>	<p class='a-desc'>График при наличии добавляется ежемесячно. </p>	<h2>Октябрь</h2>	<img src="images/October_2014.jpg" ></div>

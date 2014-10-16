@@ -175,8 +175,12 @@ class Added extends CActiveRecord
 				$this->date_aoi = null;
 				$this->user_id_aoi = null;
 			}
+			if ($this->number_memo < 0) {				
+				$this->addError($attribute, Yii::t('number_memo', 'Проверьте номер служебной записки')); 				
+				return false;			
+			}
 			
-			$timestamp = date("Ymd");
+			$timestamp = date("Ymd");			if(CDateTimeParser::parse($this->date_memo,'yyyy-MM-dd')!==false){				$date_memo = date("Ymd", strtotime($this->date_memo));				if ($date_memo > $timestamp){					$this->addError($attribute, Yii::t('date_memo', 'Дата служебной записки не может быть позднее сегодняшнего дня')); 					return false;				}			} else {				$this->addError($attribute, Yii::t('date_memo', 'Проверьте формат введенной даты (Пример: 2014-01-31)')); 				return false;			}
 			if ($this->job_print == 2) {
 				if(CDateTimeParser::parse($this->date_print,'yyyy-MM-dd')!==false){
 					$date_print = date("Ymd", strtotime($this->date_print));

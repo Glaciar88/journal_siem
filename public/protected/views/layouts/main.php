@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="language" content="ru" />
+	<meta name="language" content="ru" />	<meta name="robots" content="noindex,follow" />
 	<?php //Time Zone
 date_default_timezone_set("Europe/Moscow");?>
 	<!-- blueprint CSS framework -->
@@ -43,6 +43,7 @@ date_default_timezone_set("Europe/Moscow");?>
 						if (Yii::app()->user->role == 'operator' || Yii::app()->user->role == 'administrator') {
 							echo "<li>"; echo CHtml::link('Добавить терминал', array('terminals/create')); echo "</li>";
 							echo "<li>"; echo CHtml::link('Добавить блок', array('blocks/create')); echo "</li>";
+							echo "<li>"; echo CHtml::link('График работы', array('/site/schedule')); echo "</li>";
 						}?>
 						<?php 
 							if (Yii::app()->user->role == 'administrator') {

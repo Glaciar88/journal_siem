@@ -31,7 +31,7 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		$this->render('index');
 	}
-	
+	public function actionSchedule()	{		$this->render('schedule');	}
 	public function accessRules()
 	{
 		return array(
@@ -126,5 +126,5 @@ class SiteController extends Controller
 	{
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
-	}
+	}		
 }

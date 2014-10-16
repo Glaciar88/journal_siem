@@ -12,7 +12,7 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>false,	
 )); ?>
 
 	<p class="note">Поля помеченные <span class="required">*</span> являются обязательными.</p>
@@ -33,7 +33,7 @@
 	</div>
 	<div class="row block_id">
 		<?php echo $form->labelEx($model,'block_id',array('label'=>'Печатная плата')); ?>
-		<?php echo $form->dropDownList($model, 'block_id', CHtml::listData(Blocks::model()->findAll(), 'id', 'name'), array('empty' => '(Выберите из списка)')); ?>
+		<?php echo $form->dropDownList($model, 'block_id', CHtml::listData(Blocks::model()->findAll(array('order'=>'name')), 'id', 'name'), array('empty' => '(Выберите из списка)')); ?>
 		<?php echo $form->error($model,'block_id'); ?>
 	</div>
 	<div class="row">
@@ -56,8 +56,8 @@
 
 		<div class="row col">
 			<?php echo $form->labelEx($model,'user_id_print',array('label'=>'Выполнил')); ?>
-			
-			<?php echo $form->dropDownList($model, 'user_id_print', CHtml::listData(User::model()->findAll(array('condition' => '`role` in ("administrator", "operator")')), 'id', 'name'), array('empty' => '(Выберите из списка)')); ?>
+			<?php if (Yii::app()->user->role == 'administrator') {		
+				echo $form->dropDownList($model, 'user_id_print', CHtml::listData(User::model()->findAll(array('condition' => '`role` in ("administrator", "operator")')), 'id', 'name'), array('empty' => '(Выберите из списка)'));			} else {				echo $form->dropDownList($model, 'user_id_print', CHtml::listData(User::model()->findAll(array('condition' => '`id` in ("' . $model->user_id_print . '", "' . Yii::app()->user->id . '")')), 'id', 'name'), array('empty' => '(Выберите из списка)')); 			} ?>
 			<?php echo $form->error($model,'user_id_print'); ?>
 		</div>
 	</div>
@@ -75,8 +75,12 @@
 			<?php echo $form->error($model,'date_instal'); ?>
 		</div>
 		<div class="row col">
-			<?php echo $form->labelEx($model,'user_id_instal',array('label'=>'Выполнил')); ?>
-			<?php echo $form->dropDownList($model, 'user_id_instal', CHtml::listData(User::model()->findAll(array('condition' => '`role` in ("administrator", "operator")')), 'id', 'name'), array('empty' => '(Выберите из списка)')); ?>
+			<?php echo $form->labelEx($model,'user_id_instal',array('label'=>'Выполнил')); ?>			
+			<?php if (Yii::app()->user->role == 'administrator') {						
+				echo $form->dropDownList($model, 'user_id_instal', CHtml::listData(User::model()->findAll(array('condition' => '`role` in ("administrator", "operator")')), 'id', 'name'), array('empty' => '(Выберите из списка)'));			
+			} else {				
+				echo $form->dropDownList($model, 'user_id_instal', CHtml::listData(User::model()->findAll(array('condition' => '`id` in ("' . $model->user_id_instal . '", "' . Yii::app()->user->id . '")')), 'id', 'name'), array('empty' => '(Выберите из списка)')); 			
+			} ?>			
 			<?php echo $form->error($model,'user_id_instal'); ?>
 		</div>
 	</div>	
@@ -95,8 +99,9 @@
 		</div>
 
 		<div class="row col">
-			<?php echo $form->labelEx($model,'user_id_aoi',array('label'=>'Выполнил')); ?>
-			<?php echo $form->dropDownList($model, 'user_id_aoi', CHtml::listData(User::model()->findAll(array('condition' => '`role` in ("administrator", "operator")')), 'id', 'name'), array('empty' => '(Выберите из списка)')); ?>
+			<?php echo $form->labelEx($model,'user_id_aoi',array('label'=>'Выполнил')); ?>			<?php if (Yii::app()->user->role == 'administrator') {						echo $form->dropDownList($model, 'user_id_aoi', CHtml::listData(User::model()->findAll(array('condition' => '`role` in ("administrator", "operator")')), 'id', 'name'), array('empty' => '(Выберите из списка)'));			} else {				
+				echo $form->dropDownList($model, 'user_id_aoi', CHtml::listData(User::model()->findAll(array('condition' => '`id` in ("' . $model->user_id_aoi . '", "' . Yii::app()->user->id . '")')), 'id', 'name'), array('empty' => '(Выберите из списка)')); 			
+			} ?>			
 			<?php echo $form->error($model,'user_id_aoi'); ?>
 		</div>
 	</div>
